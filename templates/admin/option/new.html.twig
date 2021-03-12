@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title %} ajouter option {% endblock %}
+
+{% block body %}
+    <div class="container mt-4 ">
+        <h1>Créer une nouvelle option</h1>
+
+        {#si notre formulaire porte le nom "form" c'est inutile de le passer dans l'inclusion.
+        {{  include('admin/property/_form.html.twig', {form: form, button: 'Ajouter un bien'}) }}#}
+
+        {{  include('admin/option/_form.html.twig', {button: 'Ajouter une nouvelle option'}) }}
+
+    </div>
+{% endblock %}

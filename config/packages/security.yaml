@@ -1,0 +1,43 @@
+security:
+   encoders:
+        App\Entity\User:
+          algorithm: bcrypt
+          cost: 12
+
+
+
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+   providers:
+     from_database:
+         entity:
+           class: App\Entity\User
+           property: username
+
+  #        # used to reload user from session & other features (e.g. switch_user)
+  #
+  #        # used to reload user from session & other features (e.g. switch_user)
+   firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: lazy
+            #http_basic: true
+
+#            provider: app_user_provider
+            form_login:
+                check_path: login
+
+          #
+            logout:
+                path: logout
+                target: /
+
+
+
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+   access_control:
+       - { path: ^/admin, roles: ROLE_ADMIN }
+       #- { path: ^/profile, roles: ROLE_USER }
